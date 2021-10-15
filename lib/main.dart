@@ -25,28 +25,17 @@ class BodyListView extends StatelessWidget {
 }
 
 Widget _myListView() {
-  return ListView(
-    padding: EdgeInsets.all(8.0),
-    children: [
-      ListTile(
-        title: Text('Миша'),
-        subtitle: Text('Сработаемся, мне нравиться твоя аватарка'),
-        leading: Icon(Icons.wb_sunny),
-        trailing: Icon(Icons.keyboard_arrow_right),
-      ),
-      ListTile(
-        title: Text('Миша'),
-        subtitle: Text('Сработаемся, мне нравиться твоя аватарка'),
-        leading: Icon(Icons.wb_sunny),
-        trailing: Icon(Icons.keyboard_arrow_right),
-      ),
-      ListTile(
-        title: Text('Миша'),
-        subtitle: Text('Сработаемся, мне нравиться твоя аватарка'),
-        leading: Icon(Icons.wb_sunny),
-        trailing: Icon(Icons.keyboard_arrow_right),
-      ),
+  final List<String> items = List<String>.generate(10000, (i) => 'Item $i');
 
-    ],
-  );
+  return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        return Card(
+          child: ListTile(
+            title: Text('${items[index]}'),
+            leading: Icon(Icons.insert_photo, color: Colors.red,),
+            trailing: Icon(Icons.keyboard_arrow_right),
+          ),
+        );
+      });
 }
